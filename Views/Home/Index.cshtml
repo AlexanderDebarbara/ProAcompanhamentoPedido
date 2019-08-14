@@ -1,2 +1,73 @@
-﻿
-    <h1>Hello World</h1>
+﻿@model IEnumerable<Pedido>
+@{
+    Layout = "_Layout";
+}
+
+<script>
+    setInterval(function () { location.reload(); }, 3000);
+</script>
+<div class="row">
+
+    <table class="table col-4">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col" style="background-color:aqua; border-color:aqua;">Código</th>
+                <th scope="col" style="background-color:aqua; border-color:aqua;">@DomStatusPedido.SEPARACAO</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Pedido p in Model)
+            {
+                if (p.Status == DomStatusPedido.SEPARACAO)
+                {
+                    <tr>
+                        <td>@p.PedidoId</td>
+                        <td>@p.Cliente.Nome</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+    <table class="table col-4">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Código</th>
+                <th scope="col">@DomStatusPedido.BALCAO</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Pedido p in Model)
+            {
+                if (p.Status == DomStatusPedido.BALCAO)
+                {
+                    <tr>
+                        <td>@p.PedidoId</td>
+                        <td>@p.Cliente.Nome</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+    <table class="table col-4">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Código</th>
+                <th scope="col">@DomStatusPedido.ENTREGUE</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Pedido p in Model)
+            {
+                if (p.Status == DomStatusPedido.ENTREGUE)
+                {
+                    <tr>
+                        <td>@p.PedidoId</td>
+                        <td>@p.Cliente.Nome</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
