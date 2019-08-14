@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProAcompanhamentoPedido.Dominio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -7,17 +8,19 @@ using System.Threading.Tasks;
 
 namespace ProAcompanhamentoPedido.Models
 {
-    [Table("tb01_cliente")]
-    public class Cliente
+    [Table("tb02_pedido")]
+    public class Pedido
     {
         [Key]
         [Column("id")]
+        public int PedidoId { get; set; }
+
+        [Column("cliente_id")]
         public int ClienteId { get; set; }
 
-        [Column("nome")]
-        public string Nome { get; set; }
+        [Column("status")]
+        public DomStatusPedido Status { get; set; }
 
-        [InverseProperty("Cliente")]
-        public List<Pedido> Pedidos { get; set; }
+        public Cliente Cliente { get; set; }
     }
 }
